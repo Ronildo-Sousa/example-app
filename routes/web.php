@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\SearchAction;
+use App\Searchables\ViaCepApi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return ['Laravel' => app()->version()];
+    // return ['Laravel' => app()->version()];
+    (new SearchAction)->run(new ViaCepApi, '39640000');
 });
 
 require __DIR__.'/auth.php';
