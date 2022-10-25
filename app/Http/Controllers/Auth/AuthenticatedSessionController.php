@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -19,9 +20,16 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
+        /** @var User $user */
+        $user = request()->user();
 
-        return response()->noContent();
+        if (!empty($user->tokens)) {
+            $user->tokens()->delete();
+        }
+
+        $token = $user->createToken($user->email)->plainTextToken;
+
+        return response()->json(['user' => $user, 'token' => $token], Response::HTTP_OK);
     }
 
     /**

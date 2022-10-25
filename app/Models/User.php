@@ -16,6 +16,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'tokens'
     ];
 
     public function searches(): HasMany
