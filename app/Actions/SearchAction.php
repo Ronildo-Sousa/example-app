@@ -2,13 +2,16 @@
 
 namespace App\Actions;
 
-use App\contracts\SearchableCEP;
-use App\contracts\SearchableWeather;
+use App\Contracts\SearchableCEP;
+use App\Contracts\SearchableWeather;
+use App\Searchables\HgBrasilApi;
+use App\Searchables\ViaCepApi;
 
 class SearchAction
 {
-    public function run(SearchableCEP $searchableCEP, string $search)
+    public function run(string $search, SearchableCEP $searchableCEP = (new ViaCepApi), SearchableWeather $searchableWeather = (new HgBrasilApi))
     {
-        dd($searchableCEP->handle($search));   
+        // $dataCEP = $searchableCEP->handle($search);   
+        $searchableWeather->handle('berilo');
     }
 }

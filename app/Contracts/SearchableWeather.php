@@ -1,10 +1,10 @@
 <?php
 
-namespace App\contracts;
+namespace App\Contracts;
 
 use Illuminate\Support\Collection;
 
 interface SearchableWeather 
 {
-    public function handle(string $search): Collection;
+    public function handle(string $search): array|string;
 }

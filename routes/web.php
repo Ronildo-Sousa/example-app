@@ -3,6 +3,8 @@
 use App\Actions\SearchAction;
 use App\Models\User;
 use App\Searchables\ViaCepApi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return ['Laravel' => app()->version()];
-   return User::find(1)->tokens;
+    dd((new ViaCepApi)->handle('39640000'));
 });
 
 
