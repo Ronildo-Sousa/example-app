@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('CEP');
             $table->string('city');
-            $table->string('pulic_place');
+            $table->string('public_place');
             $table->string('weather');
             $table->string('temperature');
             $table->string('moisture');

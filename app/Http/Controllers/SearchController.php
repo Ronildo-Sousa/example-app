@@ -6,6 +6,7 @@ use App\Actions\SearchAction;
 use App\Http\Requests\SearchRequest;
 use App\Searchables\ViaCepApi;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SearchController extends Controller
 {
@@ -16,7 +17,9 @@ class SearchController extends Controller
 
     public function store(SearchRequest $request)
     {
-        (new SearchAction)->run( $request->search);
+        $search = (new SearchAction)->run( $request->search);
+
+        return response()->json($search, Response::HTTP_CREATED);
     }
 
     public function show($id)
