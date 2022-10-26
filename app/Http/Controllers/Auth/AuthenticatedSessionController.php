@@ -26,6 +26,7 @@ class AuthenticatedSessionController extends Controller
         if (!empty($user->tokens)) {
             $user->tokens()->delete();
         }
+        Auth::login($user);
 
         $token = $user->createToken($user->email)->plainTextToken;
 
