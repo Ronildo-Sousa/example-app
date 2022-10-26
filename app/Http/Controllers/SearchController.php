@@ -27,13 +27,10 @@ class SearchController extends Controller
         return response()->json($search, Response::HTTP_OK);
     }
 
-    public function update(Request $request, $id)
+    public function destroy(Search $search)
     {
-        //
-    }
+        $search->delete();
 
-    public function destroy($id)
-    {
-        //
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }
