@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Actions\SearchAction;
 use App\Http\Requests\SearchRequest;
-use App\Searchables\ViaCepApi;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -12,7 +11,7 @@ class SearchController extends Controller
 {
     public function index()
     {
-        //
+        return response()->json(auth()->user()->searches, Response::HTTP_OK);
     }
 
     public function store(SearchRequest $request)
