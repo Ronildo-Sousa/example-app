@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\SearchAction;
 use App\Http\Requests\SearchRequest;
+use App\Models\Search;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -21,9 +22,9 @@ class SearchController extends Controller
         return response()->json($search, Response::HTTP_CREATED);
     }
 
-    public function show($id)
+    public function show(Search $search)
     {
-        //
+        return response()->json($search, Response::HTTP_OK);
     }
 
     public function update(Request $request, $id)
